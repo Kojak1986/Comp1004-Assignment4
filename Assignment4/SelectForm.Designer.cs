@@ -63,6 +63,7 @@
             this.NextButton.TabIndex = 2;
             this.NextButton.Text = "Next";
             this.NextButton.UseVisualStyleBackColor = false;
+            this.NextButton.Click += new System.EventHandler(this.NextButton_Click);
             // 
             // CancelButton
             // 
@@ -73,6 +74,7 @@
             this.CancelButton.TabIndex = 3;
             this.CancelButton.Text = "Cancel";
             this.CancelButton.UseVisualStyleBackColor = false;
+            this.CancelButton.Click += new System.EventHandler(this.CancelButton_Click);
             // 
             // ComputersDataGridView
             // 
@@ -81,6 +83,7 @@
             this.ComputersDataGridView.Name = "ComputersDataGridView";
             this.ComputersDataGridView.Size = new System.Drawing.Size(703, 329);
             this.ComputersDataGridView.TabIndex = 4;
+            this.ComputersDataGridView.SelectionChanged += new System.EventHandler(this.ComputersDataGridView_SelectionChanged);
             // 
             // GridViewLabel
             // 
@@ -112,6 +115,7 @@
             this.Name = "SelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Select Your Computer";
+            this.Load += new System.EventHandler(this.SelectForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.ComputersDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

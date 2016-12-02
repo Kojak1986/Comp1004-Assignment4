@@ -45,6 +45,7 @@
             this.ExitButton.TabIndex = 0;
             this.ExitButton.Text = "Exit";
             this.ExitButton.UseVisualStyleBackColor = false;
+            this.ExitButton.Click += new System.EventHandler(this.ExitButton_Click);
             // 
             // StartOrderButton
             // 
@@ -55,6 +56,7 @@
             this.StartOrderButton.TabIndex = 1;
             this.StartOrderButton.Text = "Start a New Order";
             this.StartOrderButton.UseVisualStyleBackColor = false;
+            this.StartOrderButton.Click += new System.EventHandler(this.StartOrderButton_Click);
             // 
             // OpenOrderButton
             // 
