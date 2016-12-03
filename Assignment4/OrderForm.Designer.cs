@@ -524,10 +524,12 @@
             // ProductPictureBox
             // 
             this.ProductPictureBox.BackColor = System.Drawing.Color.Transparent;
+            this.ProductPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ProductPictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.ProductPictureBox.Location = new System.Drawing.Point(419, 36);
             this.ProductPictureBox.Name = "ProductPictureBox";
-            this.ProductPictureBox.Size = new System.Drawing.Size(144, 155);
+            this.ProductPictureBox.Size = new System.Drawing.Size(202, 155);
+            this.ProductPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.ProductPictureBox.TabIndex = 3;
             this.ProductPictureBox.TabStop = false;
             // 
@@ -562,6 +564,7 @@
             this.FinishButton.TabIndex = 6;
             this.FinishButton.Text = "Finish";
             this.FinishButton.UseVisualStyleBackColor = false;
+            this.FinishButton.Click += new System.EventHandler(this.FinishButton_Click);
             // 
             // OrderForm
             // 
@@ -585,6 +588,7 @@
             this.Name = "OrderForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Order ";
+            this.Load += new System.EventHandler(this.OrderForm_Load);
             this.OrderMenuStrip.ResumeLayout(false);
             this.OrderMenuStrip.PerformLayout();
             this.ComponentsGroupBox.ResumeLayout(false);

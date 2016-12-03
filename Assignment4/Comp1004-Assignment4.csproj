@@ -141,7 +141,33 @@
   <ItemGroup>
     <None Include="Resources\backGround.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\cypertron.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\gateway.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ibuypower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lenovo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\toshiba.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\acer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apple.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\asus.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

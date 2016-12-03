@@ -15,6 +15,7 @@ namespace Assignment4
 {
     public partial class ProductInfoForm : Form
     {
+        public SelectForm previousForm;
         
         
         public ProductInfoForm()
@@ -30,16 +31,19 @@ namespace Assignment4
 
         private void SelectAnotherButton_Click(object sender, EventArgs e)
         {
-            SelectForm select = new SelectForm();
-            select.Show();
-            this.Hide();
+            
+           this.previousForm.Show();
+           this.Close();
+            
         }
 
         private void NextButton_Click(object sender, EventArgs e)
         {
             OrderForm order = new OrderForm();
-            order.Show();
+            order.previousForm = this;
+
             this.Hide();
+            order.Show();
         }
 
         private void ProductInfoForm_Load(object sender, EventArgs e)
@@ -47,9 +51,29 @@ namespace Assignment4
             LoadForm();
         }
 
+        //grab selected info and populate
         private void LoadForm()
         {
-            ProductIdTextBox.Text = Program.myProduct.manufacturer.ToString();
+            string savedCost = Program.myProduct.cost.ToString();
+            double convertCost = Convert.ToDouble(savedCost);
+
+            ProductIdTextBox.Text = Program.myProduct.productID.ToString();
+            ConditionTextBox.Text = Program.myProduct.condition.ToString();
+            CostTextBox.Text = convertCost.ToString("C2");
+            PlatformTextBox.Text = Program.myProduct.platform.ToString();
+            OSTextBox.Text = Program.myProduct.OS.ToString();
+            ManufacturerTextBox.Text = Program.myProduct.manufacturer.ToString();
+            ModelTextBox.Text = Program.myProduct.model.ToString();
+            MemoryTextBox.Text = Program.myProduct.RAM_size.ToString();
+            LCDTextBox.Text = Program.myProduct.screensize.ToString();
+            HDDTextBox.Text = Program.myProduct.HDD_size.ToString();
+            CPUBrandTextBox.Text = Program.myProduct.CPU_brand.ToString();
+            CPUNumberTextBox.Text = Program.myProduct.CPU_number.ToString();
+            CPUTypeTextBox.Text = Program.myProduct.CPU_type.ToString();
+            CPUSpeedTextBox.Text = Program.myProduct.CPU_speed.ToString();
+            GPUTypeTextBox.Text = Program.myProduct.GPU_Type.ToString();
+            WebCamTextBox.Text = Program.myProduct.webcam.ToString();
+               
             
            
                    

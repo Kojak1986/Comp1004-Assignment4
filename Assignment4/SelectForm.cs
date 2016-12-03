@@ -15,69 +15,40 @@ namespace Assignment4
     public partial class SelectForm : Form
     {
         private ComputerContext db = new ComputerContext();
-        private product CurrentItem;
+        
         // private table CurrentItem;
         public SelectForm()
         {
             InitializeComponent();
         }
 
+        //Pull database and display
         private void SelectForm_Load(object sender, EventArgs e)
         {
             
             this.productsTableAdapter.Fill(this.assignment4DataSet.products);
-            // GetComputers();
+            
             List < product > ProductList = (from product in db.products
                                 select product).ToList();
 
             ComputersDataGridView.DataSource = ProductList;
         }
 
-       
-
-        public void SelectData(DataGridViewRow currentRow)
-        {
-            this.CurrentItem = (product)currentRow.DataBoundItem;
-            Debug.WriteLine(this.CurrentItem.model);
-
-            YourSelectionTextBox.Text = ProductItem(CurrentItem);
-            
-        }
-    
-        private string ProductItem(product selected)
-       {
-            int selectedID = selected.productID;
-
-         string sum = selected.manufacturer + " " + selected.model;
-            return sum;
-        }
-
-       
-
+       //Cancel closes app
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            // private void ComputersDataGridView_SelectionChanged(object sender, EventArgs e)
-       // {
-          //  try
-          //  {
-           //     ComputersDataGridView.CurrentRow.Selected = true;
-           //     SelectData(ComputersDataGridView.CurrentRow);
-           // }
-           // catch
-           // {
-
-           // }
-
-        //}
+          
         Application.Exit();
         }
-
+        //Shows next form
         private void NextButton_Click(object sender, EventArgs e)
         {
-    
+
             ProductInfoForm info = new ProductInfoForm();
-            info.Show();
+            info.previousForm = this;
+
             this.Hide();
+            info.Show();
         }
 
         
@@ -100,8 +71,18 @@ namespace Assignment4
                                          where product.productID == productID
                                          select product).FirstOrDefault();
 
-                    YourSelectionTextBox.Text = Program.myProduct.manufacturer.ToString();
-                }
+
+                string savedCost = Program.myProduct.cost.ToString();
+                double convertCost = Convert.ToDouble(savedCost);
+
+                YourSelectionTextBox.Text = Program.myProduct.manufacturer + ", " + Program.myProduct.model.ToString() + ", "
+                    + convertCost.ToString("C2");
+
+
+
+
+
+            }
 
             
         }
