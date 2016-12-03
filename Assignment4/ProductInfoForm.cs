@@ -8,13 +8,19 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
+
+
 namespace Assignment4
 {
     public partial class ProductInfoForm : Form
     {
+        
+        
         public ProductInfoForm()
         {
             InitializeComponent();
+            
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -36,14 +42,17 @@ namespace Assignment4
             this.Hide();
         }
 
-        private void ProductInfoMenuStrip_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
         private void ProductInfoForm_Load(object sender, EventArgs e)
         {
+            LoadForm();
+        }
 
+        private void LoadForm()
+        {
+            ProductIdTextBox.Text = Program.myProduct.manufacturer.ToString();
+            
+           
+                   
         }
     }
 }

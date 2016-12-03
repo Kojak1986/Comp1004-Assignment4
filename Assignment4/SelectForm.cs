@@ -7,14 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Assignment4.Models;
 using System.Diagnostics;
+using Assignment4.Models;
 
 namespace Assignment4
 {
     public partial class SelectForm : Form
     {
-        private table CurrentItem;
+        private ComputerContext db = new ComputerContext();
+        private product CurrentItem;
+        // private table CurrentItem;
         public SelectForm()
         {
             InitializeComponent();
@@ -22,60 +24,86 @@ namespace Assignment4
 
         private void SelectForm_Load(object sender, EventArgs e)
         {
-            GetComputers();
-        }
+            
+            this.productsTableAdapter.Fill(this.assignment4DataSet.products);
+            // GetComputers();
+            List < product > ProductList = (from product in db.products
+                                select product).ToList();
 
-        private void GetComputers()
-        {
-            //Connect to the database using the Entity Framework
-            ComputerComtext db = new ComputerComtext();
-
-            //Use LINK to access the computer database
-            var ProductList = (from table in db.tables
-                               select table).ToList();
             ComputersDataGridView.DataSource = ProductList;
         }
 
+       
+
         public void SelectData(DataGridViewRow currentRow)
         {
-            this.CurrentItem = (table)currentRow.DataBoundItem;
+            this.CurrentItem = (product)currentRow.DataBoundItem;
             Debug.WriteLine(this.CurrentItem.model);
 
             YourSelectionTextBox.Text = ProductItem(CurrentItem);
+            
         }
-
-        private string ProductItem(table selected)
-        {
+    
+        private string ProductItem(product selected)
+       {
             int selectedID = selected.productID;
 
-            string sum = selected.manufacturer + " " + selected.model;
+         string sum = selected.manufacturer + " " + selected.model;
             return sum;
         }
 
-        private void ComputersDataGridView_SelectionChanged(object sender, EventArgs e)
-        {
-            try
-            {
-                ComputersDataGridView.CurrentRow.Selected = true;
-                SelectData(ComputersDataGridView.CurrentRow);
-            }
-            catch
-            {
-
-            }
-
-        }
+       
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            // private void ComputersDataGridView_SelectionChanged(object sender, EventArgs e)
+       // {
+          //  try
+          //  {
+           //     ComputersDataGridView.CurrentRow.Selected = true;
+           //     SelectData(ComputersDataGridView.CurrentRow);
+           // }
+           // catch
+           // {
+
+           // }
+
+        //}
+        Application.Exit();
         }
 
         private void NextButton_Click(object sender, EventArgs e)
         {
+    
             ProductInfoForm info = new ProductInfoForm();
             info.Show();
             this.Hide();
+        }
+
+        
+        //Highlight the row selected and save data into product.cs
+        private void ComputersDataGridView_RowEnter(object sender, DataGridViewCellEventArgs e)
+        {
+            
+                if (e.RowIndex != -1)
+               {
+
+                int index = e.RowIndex;
+                ComputersDataGridView.Rows[index].Selected = true;
+
+                int productID = Convert.ToInt32(ComputersDataGridView.Rows[e.RowIndex].Cells[0].Value);
+
+               
+
+
+                Program.myProduct = (from product in db.products
+                                         where product.productID == productID
+                                         select product).FirstOrDefault();
+
+                    YourSelectionTextBox.Text = Program.myProduct.manufacturer.ToString();
+                }
+
+            
         }
     }
 }

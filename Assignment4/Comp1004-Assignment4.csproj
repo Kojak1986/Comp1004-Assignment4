@@ -57,8 +57,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\ComputerComtext.cs" />
-    <Compile Include="Models\table.cs" />
+    <Compile Include="Assignment4DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Assignment4DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ComputerContext.cs" />
+    <Compile Include="Models\product.cs" />
     <Compile Include="OrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +112,18 @@
     <EmbeddedResource Include="StartForm.resx">
       <DependentUpon>StartForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="App.Config" />
+    <None Include="Assignment4DataSet.xsc">
+      <DependentUpon>Assignment4DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Assignment4DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Assignment4DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Assignment4DataSet.xss">
+      <DependentUpon>Assignment4DataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -119,17 +136,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\logo.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\backGround.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\DATA\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

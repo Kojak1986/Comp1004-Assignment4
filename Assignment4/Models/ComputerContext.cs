@@ -5,18 +5,18 @@ namespace Assignment4.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class ComputerComtext : DbContext
+    public partial class ComputerContext : DbContext
     {
-        public ComputerComtext()
+        public ComputerContext()
             : base("name=ComputerConnection")
         {
         }
 
-        public virtual DbSet<table> tables { get; set; }
+        public virtual DbSet<product> products { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<table>()
+            modelBuilder.Entity<product>()
                 .Property(e => e.cost)
                 .HasPrecision(19, 4);
         }

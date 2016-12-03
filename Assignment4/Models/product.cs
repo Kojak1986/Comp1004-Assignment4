@@ -6,10 +6,8 @@ namespace Assignment4.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("table")]
-    public partial class table
+    public partial class product
     {
-        [Key]
         public short productID { get; set; }
 
         [Column(TypeName = "money")]
